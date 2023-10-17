@@ -123,31 +123,32 @@ public class Demo {
         hashMap.put(2021, "17");
         hashMap.put(2023, "21");
 
-        System.out.println("hashmap: " + hashMap);
+        System.out.println("HashMap: " + hashMap);
         // Output: {2014=1.8, 2018=11, 2021=17, 2023=21}
 
-        hashMap.put(1996, "1.0");
-        hashMap.put(2024, "22");
+        hashMap.putFirst(1996, "1.0");
+        hashMap.putLast(2024, "22");
 
-        System.out.println("hashmap: " + hashMap);
-        // Output: {2014=1.8, 2018=11, 2021=17, 2023=21, 1996=1.0, 2024=22}
+        System.out.println("HashMap: " + hashMap);
+        // Output: {1996=1.0, 2014=1.8, 2018=11, 2021=17, 2023=21, 2024=22}
 
         System.out.println("Fetching first entry: " + hashMap.firstEntry());
-        // Output: 2014=1.8
+        // Output: 2024=22
 
         System.out.println("Fetching last entry: " + hashMap.lastEntry());
         // Output: 2024=22
 
         System.out.println("Removing first entry: " + hashMap.pollFirstEntry());
-        // Output: 2014=1.8
+        // Output: 1996=1.0
 
         System.out.println("Removing last entry: " + hashMap.pollLastEntry());
         // Output: 2024=22
 
-        System.out.println("hashMap: " + hashMap);
-        // Output: {2018=11, 2021=17, 2023=21, 1996=1.0}
+        System.out.println("HashMap: " + hashMap);
+        // Output: {2014=1.8, 2018=11, 2021=17, 2023=21}
 
         System.out.println("Reversed view of the map: " + hashMap.reversed());
+        // Output: {2023=21, 2021=17, 2018=11, 2014=1.8}
 
     }
 }
