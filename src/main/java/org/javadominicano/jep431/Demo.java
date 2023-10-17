@@ -1,9 +1,12 @@
 package org.javadominicano.jep431;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Demo {
     public static void main(String[] args) {
-
+        List<Integer> list = new ArrayList<>();
         /*
         List<Integer> list = new ArrayList<>();
         list.add(2014);                         // Adds 2014 to the list.
