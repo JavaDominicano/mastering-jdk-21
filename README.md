@@ -1,6 +1,6 @@
 # Explorando algunas funcionalidades de Java 21
 
-![banner.png](assets/banner.png)
+![banner.png](src/main/resources/assets/banner.png)
 
 ### Descargo de responsabilidad
 
