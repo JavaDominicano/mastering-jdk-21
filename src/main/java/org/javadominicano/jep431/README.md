@@ -1,9 +1,39 @@
-# Sequenced Collections (JEP-431)
+# [Sequenced Collections (JEP-431)](https://openjdk.org/jeps/431)
 
-![jep431.png](../../../../../../assets/collections.png)
-`Collections Framework with Sequenced Interfaces and some implementations `
+
 
 ## SequencedCollection
+
+La versión 21 de Java introduce la interfaz `SequenceCollection`, que se caracteriza por ser una colección con una
+secuencia bien definida, que admite operaciones en ambos extremos y es reversible.
+
+La interfaz `SequenceCollection` hereda numerosos métodos de la interfaz `Collection`, asegurando que las operaciones
+mantengan el orden de encuentro. Estos métodos heredados
+incluyen `iterator`, `forEach`, `parallelStream`, `spliterator`, `stream`
+y `toArray`. En consecuencia, cuando interactúas con una `SequenceCollection`, puedes confiar en que estos métodos
+proporcionarán los elementos en el orden prescrito.
+
+Una de las características destacadas de `SequenceCollection` es su capacidad para agregar, recuperar y eliminar
+elementos
+en ambos extremos de la colección. Esta capacidad es posible gracias a nuevos métodos
+como `addFirst`, `addLast`, `getFirst`, `getLast`, `removeFirsty` `removeLast`
+
+### ¿Qué necesidades abordan?
+
+`SequencedCollections` aborda problemas en el `Java Collections Framework`, como la falta de un supertipo común para
+colecciones con orden de encuentro. Esto dificulta expresar ciertos conceptos útiles en las API. También carece de una
+forma uniforme de acceder al primer y último elemento de una colección o de iterar en orden inverso. Las colecciones
+secuenciadas introducen interfaces que resuelven estos problemas de manera consistente en todas las colecciones con
+orden de encuentro.
+
+### ¿Cómo encajan en el framework de colecciones existente?
+
+Sequenced Collections introduce tres nuevas interfaces: `SequencedCollection`, `SequencedSet` y `SequencedMap`. Estas
+interfaces amplían de sus respectivas interfaces (`Collection`, `Set`, y `Map`) y proporcionan métodos adicionales para acceder y
+manipular sus elementos según su orden de encuentro.
+
+![sequenced-collection-set.png](assets/sequenced-collection-set.png)
+`SequencedCollections and SequencedSet Interfaces and some implementations `
 
 ```java
 interface SequencedCollection<E> extends Collection<E> {
@@ -23,11 +53,11 @@ interface SequencedCollection<E> extends Collection<E> {
     default E removeFirst();
 
     default E removeLast();
-    
+
 }
 ```
 
-Por ejemplo, el siguiente programa crea un ArrayList y realiza algunas operaciones básica en él:
+Por ejemplo, el siguiente programa crea un `ArrayList` y realiza algunas operaciones básica en él:
 
 ```java
 public class Demo {
@@ -53,6 +83,10 @@ public class Demo {
 }
 ```
 
+El método `reversed`, como se muestra en el código anterior, proporciona una vista en orden inverso de
+`SequenceCollection`. En esta visión invertida, los conceptos de primero y último están invertidos, al igual que los
+conceptos de sucesor y predecesor.
+
 ## SequencedSet
 
 ```java
@@ -60,11 +94,11 @@ interface SequencedSet<E> extends Set<E>, SequencedCollection<E> {
 
     @Override
     SequencedSet<E> reversed();
-    
+
 }
 ```
 
-Por ejemplo, el siguiente programa crea un LinkedHashSet y realiza algunas operaciones básica en él:
+Por ejemplo, el siguiente programa crea un `LinkedHashSet` y realiza algunas operaciones básica en él:
 
 ```java
 public class Demo {
@@ -80,7 +114,19 @@ public class Demo {
 }
 ```
 
+La interfaces `SequenceCollection` y `SequencedSet` nos ofrecen varios beneficios, tales como:
+
+- _Control mejorado_
+- _Orden de encuentro consistente_
+- _Reversibilidad_
+- _Compatibilidad_
+
 ## SequencedMap
+
+La interfaz `SequencedMap` es específica de implementaciones de mapas como `LinkedHashMap`. `SequencedMap`
+extiende `Map` y proporciona métodos para acceder y manipular sus entradas según su orden de encuentro.
+
+![sequenced-map.png](assets/sequenced-map.png)
 
 ```java
 interface SequencedMap<K, V> extends Map<K, V> {
@@ -106,12 +152,16 @@ interface SequencedMap<K, V> extends Map<K, V> {
     default Map.Entry<K, V> pollFirstEntry(); //Removes and returns the first entry in the map.
 
     default Map.Entry<K, V> pollLastEntry(); //Removes and returns the last entry in the map.
-    
+
 }
 
 ```
 
-Por ejemplo, el siguiente programa crea un LinkedHashMap y realiza algunas operaciones básica en él
+Como podemos ver, todos los métodos excepto `reversed()` son métodos predeterminados y proporcionan una implementación
+predeterminada. Esto significa que las clases de mapas existentes, como LinkedHashMap, pueden implementar esta interfaz
+sin cambiar su código.
+
+Por ejemplo, el siguiente programa crea un `LinkedHashMap` y realiza algunas operaciones básica en él
 
 ```java
 public class Demo {
