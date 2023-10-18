@@ -40,9 +40,9 @@ La motivación de este JEP no es simplemente reducir lo verboso de Java, sino ay
 
 JEP 445 permite, como un preview feature, una gran variedad de métodos **main** como punto de entrada de un programa Java. 
 
-- **main** no necesita ser static, siempre que la clase tenga un constructor sin argumentos. [_ver ejemplo no. 1 en MainMethods.java, primer snippet de código más abajo también lo demuestra_](https://github.com/BrayanMnz/mastering-jdk-21/blob/749f7ccda04f236f0b5646f578bf4c333935d23f/src/main/java/org/javadominicano/jep445/MainMethods.java#L27)
+- **main** no necesita ser static, siempre que la clase tenga un constructor sin argumentos. [_ver ejemplo no. 1 en MainMethods.java, primer snippet de código más abajo también lo demuestra_](https://github.com/JavaDominicano/mastering-jdk-21/blob/main/src/main/java/org/javadominicano/jep445/MainMethods.java#L27)
 
-- **main** no tiene que ser público, puede tener visibilidad predeterminada (sin modificador) o puede ser declarado protected. **NO** puede ser privado.  [_ver ejemplo no. 3 en MainMethods.java_](https://github.com/BrayanMnz/mastering-jdk-21/blob/749f7ccda04f236f0b5646f578bf4c333935d23f/src/main/java/org/javadominicano/jep445/MainMethods.java#L39)
+- **main** no tiene que ser público, puede tener visibilidad predeterminada (sin modificador) o puede ser declarado protected. **NO** puede ser privado.  [_ver ejemplo no. 3 en MainMethods.java_](https://github.com/JavaDominicano/mastering-jdk-21/blob/main/src/main/java/org/javadominicano/jep445/MainMethods.java#L39)
 
 - El parámetro String[] args, se puede omitir. 
 
