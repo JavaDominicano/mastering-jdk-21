@@ -38,6 +38,37 @@ En el ejemplo anterior para la simplicidad del resultado hay demasiados concepto
 
 La motivación de este JEP no es simplemente reducir lo verboso de Java, sino ayudar a los nuevos programadores a aprender Java de una manera que introduzca los conceptos en el orden correcto: fundamentos de programación, conceptos pequeños, luego proceda a la programación avanzada y sus conceptos generales cuando sean realmente beneficiosos y puedan comprenderse más fácilmente.
 
+JEP 445 permite, como un preview feature, una gran variedad de métodos **main** como punto de entrada de un programa Java. 
+
+- **main** no necesita ser static, siempre que la clase tenga un constructor sin argumentos. (_ver ejemplo no. 1 en MainMethods.java, primer snippet de código más abajo también lo demuestra_) 
+
+- **main** no tiene que ser público, puede tener visibilidad predeterminada (sin modificador) o puede ser declarado protected. **NO** puede ser privado.
+
+- El parámetro String[] args, se puede omitir. 
+
+
+```java
+public class Demo {
+    void main(){
+        System.out.println("no-static, no args");
+    }
+}
+```
+
+Si la clase contiene un constructor con argumentos, va a arrojar un error. 
+_El siguiente fragmento de código arroja un error a propósito para demostrar lo dicho anteriormente_
+
+```java 
+public class Demo {
+    public Demo(String arg){}
+
+    void main(){
+        System.out.println("Won't run, an error will be raised");
+    }
+}
+```
+
+
 #### Unnamed Classes 
 
 Básicamente, declara implicitamente la clase dentro del archivo .java 
