@@ -24,8 +24,7 @@ public class MainMethods {
 	}*/
 	
 
-	// -- no. 1 without static access modifier and without String[] args
-	
+	// -- no. 1 without static access modifier and without String[] args	
 	void main(){
 		System.out.println("main method with no-static and no args");
 	}
