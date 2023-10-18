@@ -1,4 +1,6 @@
-# Sequenced Collections (JEP-431)
+# [Sequenced Collections (JEP-431)](https://openjdk.org/jeps/431)
+
+
 
 ## SequencedCollection
 
