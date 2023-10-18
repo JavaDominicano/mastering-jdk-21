@@ -75,4 +75,32 @@ Básicamente, declara implicitamente la clase dentro del archivo .java
 
 Cuando un archivo fuente contiene al menos un método declarado fuera de la clase, el compilador colocará dichos métodos dentro de una clase sin nombre. Las clases, interfaces, registros y enumerations que se declaran en el archivo fuente están anidadas dentro de la clase sin nombre.
 
-Dado que la clase no tiene nombre, no se puede crear una instancia de ella mediante programación. La única forma de crear una instancia es iniciarlo mediante un método principal. Es un error en tiempo de compilación si no existe tal método.
+Dado que la clase no tiene nombre, no se puede crear una instancia de ella mediante programación.
+
+
+_Esto no sería posible_
+
+```java 
+MyClass x = new MyClass(); 
+```
+
+Un archivo fuente llamado HelloWorld.java que contiene una unnamed class se puede iniciar así:
+
+```
+$ java HelloWorld.java
+```
+
+El compilador de Java compilará ese archivo en el archivo de clase ejecutable HelloWorld.class. 
+
+En este caso, el compilador elige HelloWorld como nombre de clase como detalle de implementación, pero ese nombre aún no se puede usar directamente en el código fuente de Java.
+
+
+Ejemplo de Unnamed Class utilizando también las bondades de Instance Main Methods.
+
+[_simple y sencillo_](https://github.com/JavaDominicano/mastering-jdk-21/blob/main/src/main/java/org/javadominicano/jep445/HelloWorld.java)
+
+```java 
+void main(){
+    System.out.println("Java Dominicano, Mastering JDK 21 talk");
+}
+```
